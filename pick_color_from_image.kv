@@ -1,0 +1,44 @@
+#: import  platform kivy.utils.platform
+<MyLayout>
+    orientation: 'vertical'
+    spacing:10
+    padding: 5
+    FileChooserIconView:
+        canvas.before:
+            Color:
+                rgba:(0,0,0,1)
+            Rectangle:
+                pos:self.pos
+                size:self.size
+        id:filechooser
+        size_hint:(1,0.9)
+        on_selection:root.choose_image(filechooser.selection)
+        background_color:(0,0,0,1)
+        rootpath: '/storage/emulated/0/' if platform == 'android' else '/'
+    
+    
+    Button:
+        id:copy_btn
+        text:"Copy"
+        on_press: root.copy_color()
+        opacity:0
+        size_hint: 0.2,None
+        height:50
+        pos_hint:{'center_x':0.5} 
+    Label:
+        id:label
+        text:"Choose an Image \n\nMade By Aniket Thani"
+        size_hint:(0.3,0.1)
+        pos_hint: {'center_x':0.5}
+    Button:
+        id:new_image_btn
+        text:"New Image"
+        on_press: root.new_image()
+        opacity:0
+        size_hint:(0.2,None)
+        height:50
+        pos_hint:{'center_x':0.5}
+
+
+    
+        
